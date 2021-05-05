@@ -75,12 +75,13 @@ class ObstacleEntity(Object):
         #elif self.direction == '-y':
             #self.y= self.y - self.vel
             
-def isCollide(obj1, obj2): # a more efficient way to do this is if you do rectangular collision and then use masking to verify
+def isCollide(obj1, obj2): #rectangular collision and then use masking to verify
     isCollision= False
     offset_x = obj2.x - obj1.x
     offset_y = obj2.y - obj1.y
-    if obj1.mask.overlap(obj2.mask, (offset_x, offset_y)) != None: # this returns the point of intersection or none if there is no point of intersection between the sprites
-        isCollision= True
+    if offset_y < 0 or offset_x < 0:  
+        if obj1.mask.overlap(obj2.mask, (offset_x, offset_y)) != None: # this returns the point of intersection or none if there is no point of intersection between the sprit
+            isCollision= True
     return isCollision
             
 def runGame():
