@@ -79,7 +79,7 @@ def isCollide(obj1, obj2): #rectangular collision and then use masking to verify
     isCollision= False
     offset_x = obj2.x - obj1.x
     offset_y = obj2.y - obj1.y
-    if offset_y < 0 or offset_x < 0:  
+    if offset_y < (obj1.y + obj2.y) or offset_x < (obj1.x + obj2.x):  
         if obj1.mask.overlap(obj2.mask, (offset_x, offset_y)) != None: # this returns the point of intersection or none if there is no point of intersection between the sprit
             isCollision= True
     return isCollision
